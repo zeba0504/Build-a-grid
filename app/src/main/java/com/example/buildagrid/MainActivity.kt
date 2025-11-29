@@ -48,11 +48,21 @@ class MainActivity : ComponentActivity() {
                         .statusBarsPadding(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
+                    TopicGrid(
+                        modifier = Modifier.padding(
+                            start = dimensionResource(R.dimen.padding_small),
+                            top = dimensionResource(R.dimen.padding_small),
+                            end = dimensionResource(R.dimen.padding_small),
+                        )
+                    )
                 }
             }
         }
     }
+
+
+
+
 
     @Composable
     fun TopicGrid(modifier: Modifier = Modifier) {
@@ -62,6 +72,9 @@ class MainActivity : ComponentActivity() {
             horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
             modifier = modifier
         ) {
+            items(DataSource.topics) { topic ->
+                TopicCard(topic)
+            }
 
         }
     }
