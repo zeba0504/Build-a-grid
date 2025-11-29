@@ -56,3 +56,23 @@ class MainActivity : ComponentActivity() {
     }
 }
 
+
+@Composable
+fun TopicCard(topic: Topic, modifier: Modifier = Modifier) {
+    Card {
+        Row {
+            Box {
+                Image(
+                    painter = painterResource(id = topic.imageRes),
+                    contentDescription = null,
+                    modifier = modifier
+                        .size(width = 68.dp, height = 68.dp)
+                        .aspectRatio(1f),
+                    contentScale = ContentScale.Crop
+                )
+            }
+        }
+    }
+}
+
+
