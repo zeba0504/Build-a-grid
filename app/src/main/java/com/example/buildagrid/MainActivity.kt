@@ -49,7 +49,37 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
 
+                }
+            }
+        }
+    }
 
+    @Composable
+    fun TopicGrid(modifier: Modifier = Modifier) {
+        LazyVerticalGrid(
+            columns = GridCells.Fixed(2),
+            verticalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
+            horizontalArrangement = Arrangement.spacedBy(dimensionResource(R.dimen.padding_small)),
+            modifier = modifier
+        ) {
+
+        }
+    }
+
+
+    @Composable
+    fun TopicCard(topic: Topic, modifier: Modifier = Modifier) {
+        Card {
+            Row {
+                Box {
+                    Image(
+                        painter = painterResource(id = topic.imageRes),
+                        contentDescription = null,
+                        modifier = modifier
+                            .size(width = 68.dp, height = 68.dp)
+                            .aspectRatio(1f),
+                        contentScale = ContentScale.Crop
+                    )
                 }
             }
         }
@@ -57,22 +87,5 @@ class MainActivity : ComponentActivity() {
 }
 
 
-@Composable
-fun TopicCard(topic: Topic, modifier: Modifier = Modifier) {
-    Card {
-        Row {
-            Box {
-                Image(
-                    painter = painterResource(id = topic.imageRes),
-                    contentDescription = null,
-                    modifier = modifier
-                        .size(width = 68.dp, height = 68.dp)
-                        .aspectRatio(1f),
-                    contentScale = ContentScale.Crop
-                )
-            }
-        }
-    }
-}
 
 
