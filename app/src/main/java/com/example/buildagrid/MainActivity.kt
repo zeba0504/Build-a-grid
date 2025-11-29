@@ -34,6 +34,7 @@ import androidx.compose.ui.unit.dp
 import com.example.buildagrid.data.DataSource
 import com.example.buildagrid.model.Topic
 import com.example.buildagrid.ui.theme.BuildAGridTheme
+import kotlin.toString
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -59,9 +60,10 @@ class MainActivity : ComponentActivity() {
             }
         }
     }
+}
 
 
-    @Composable
+@Composable
     fun TopicGrid(modifier: Modifier = Modifier) {
         LazyVerticalGrid(
             columns = GridCells.Fixed(2),
@@ -109,9 +111,29 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier
                                 .padding(start = dimensionResource(R.dimen.padding_medium))
                         )
+                        Text(
+                            text = topic.availableCourses.toString(),
+                            style = MaterialTheme.typography.labelMedium,
+                            modifier = Modifier.padding(start = dimensionResource(R.dimen.padding_small))
+                        )
                     }
                 }
             }
+        }
+    }
+
+
+@Preview(showBackground = true)
+@Composable
+fun TopicPreview() {
+    BuildAGridTheme  {
+        val topic = Topic(R.string.photography, 321, R.drawable.photography)
+        Column(
+            modifier = Modifier.fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            TopicCard(topic = topic)
         }
     }
 }
