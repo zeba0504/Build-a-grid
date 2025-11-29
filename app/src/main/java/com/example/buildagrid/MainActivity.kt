@@ -61,9 +61,6 @@ class MainActivity : ComponentActivity() {
     }
 
 
-
-
-
     @Composable
     fun TopicGrid(modifier: Modifier = Modifier) {
         LazyVerticalGrid(
@@ -92,6 +89,18 @@ class MainActivity : ComponentActivity() {
                             .size(width = 68.dp, height = 68.dp)
                             .aspectRatio(1f),
                         contentScale = ContentScale.Crop
+                    )
+                }
+                Column {
+                    Text(
+                        text = stringResource(id = topic.name),
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.padding(
+                            start = dimensionResource(R.dimen.padding_medium),
+                            top = dimensionResource(R.dimen.padding_medium),
+                            end = dimensionResource(R.dimen.padding_medium),
+                            bottom = dimensionResource(R.dimen.padding_small)
+                        )
                     )
                 }
             }
